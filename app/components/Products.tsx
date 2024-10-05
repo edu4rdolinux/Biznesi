@@ -9,11 +9,14 @@ interface Product {
   title: string;
   price: number;
   description: string;
-  image: string;
+  thumbnail: string;
 }
 
 function cleanUrl(url: string) {
-  return url.replace(/[\[\]%22]/g, '');
+  if (!url.startsWith("http")) {
+    return `https://dummyjson.com/${url}`;
+  }
+  return url;
 }
 
 export default function Products() {
@@ -24,8 +27,8 @@ export default function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
-        setProducts(response.data);
+        const response = await axios.get<{ products: Product[] }>('https://dummyjson.com/products/category/laptops');
+        setProducts(response.data.products);
       } catch (error) {
         console.error('Error fetching products:', error);
         setError('Failed to fetch products.');
@@ -40,8 +43,7 @@ export default function Products() {
   const fallbackImage = "https://via.placeholder.com/150";
 
   const titlesToRemove = [
-    "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED",
-    "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+    ""
   ];
 
   const filteredProducts = products.filter(product => !titlesToRemove.includes(product.title));
@@ -52,8 +54,7 @@ export default function Products() {
 
   return (
     <div>
-      <h1>Products</h1>
-      <ul>
+      <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center">
         {filteredProducts.map((product) => (
           <ProductItem 
             key={product.id}
@@ -61,7 +62,7 @@ export default function Products() {
             title={product.title}
             description={product.description}
             price={product.price}
-            image={cleanUrl(product.image)}
+            image={cleanUrl(product.thumbnail)}
             fallbackImage={fallbackImage}
           />
         ))}

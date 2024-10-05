@@ -1,21 +1,22 @@
 interface ProductImageProps {
-    src: string;
-    alt: string;
-    fallback: string;
-  }
-  
-  const ProductImage: React.FC<ProductImageProps> = ({ src, alt, fallback }) => {
-    return (
-      <img
-        src={src}
-        alt={alt}
-        width="100"
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = fallback;
-        }}
-      />
-    );
+  src: string;
+  alt: string;
+  fallback: string;
+}
+
+const ProductImage: React.FC<ProductImageProps> = ({ src, alt, fallback }) => {
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = fallback;
   };
-  
-  export default ProductImage;
-  
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      width="350"
+      onError={handleError}
+    />
+  );
+};
+
+export default ProductImage;
