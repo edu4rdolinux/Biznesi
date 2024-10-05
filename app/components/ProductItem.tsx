@@ -17,7 +17,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price
       <ProductImage src={image} alt={title} fallback={fallbackImage} />
       <ProductTitle title={title} />
       <ProductDescription description={description} />
-      <p>Price: ${price}</p>
+      <p><strong>${price.toFixed(2)}</strong></p>
     </li>
   );
 };
