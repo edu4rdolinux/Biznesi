@@ -10,12 +10,15 @@ const ProductImage: React.FC<ProductImageProps> = ({ src, alt, fallback }) => {
   };
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      width="350"
-      onError={handleError}
-    />
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  <img
+    src={src}
+    alt={alt}
+    width="350"
+    onError={handleError}
+  />
+</div>
+
   );
 };
 
