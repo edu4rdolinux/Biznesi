@@ -1,6 +1,7 @@
 import ProductImage from './ProductImage';
 import ProductTitle from './ProductTitle';
 import ProductDescription from './ProductDescription';
+import ProductPrice from './ProductPrice';
 
 interface ProductItemProps {
   id: number;
@@ -17,7 +18,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price
       <ProductImage src={image} alt={title} fallback={fallbackImage} />
       <ProductTitle title={title} />
       <ProductDescription description={description} />
-      <p><strong>${price.toFixed(2)}</strong></p>
+      <ProductPrice price={price}/>
     </li>
   );
 };
