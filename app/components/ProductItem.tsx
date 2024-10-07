@@ -1,7 +1,9 @@
+import React from 'react';
 import ProductImage from './ProductImage';
 import ProductTitle from './ProductTitle';
 import ProductDescription from './ProductDescription';
 import ProductPrice from './ProductPrice';
+import ProductButton from './ProductButton'; // Importa o botão
 
 interface ProductItemProps {
   id: number;
@@ -14,11 +16,14 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price, image, fallbackImage }) => {
   return (
-    <li key={id}>
+    <li>
       <ProductImage src={image} alt={title} fallback={fallbackImage} />
       <ProductTitle title={title} />
       <ProductDescription description={description} />
-      <ProductPrice price={price}/>
+      <div className='flex flex-row gap-4'>
+        <ProductPrice price={price} />
+        <ProductButton />
+      </div>
     </li>
   );
 };
