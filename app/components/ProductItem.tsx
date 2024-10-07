@@ -3,7 +3,7 @@ import ProductImage from './ProductImage';
 import ProductTitle from './ProductTitle';
 import ProductDescription from './ProductDescription';
 import ProductPrice from './ProductPrice';
-import ProductButton from './ProductButton'; // Importa o botão
+import ProductButton from './ProductButton';
 
 interface ProductItemProps {
   id: number;
