@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -23,6 +23,7 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,12 +49,19 @@ export default function Products() {
 
   const filteredProducts = products.filter(product => !titlesToRemove.includes(product.title));
 
+  const handleBuy = (price: number) => {
+    setTotalPrice((prevTotal) => prevTotal + price);
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
 
   return (
     <div>
+      <div className="total-price">
+        <h2 className='text-slate-100 m-4 fixed'>Total: ${totalPrice.toFixed(2)}</h2>
+      </div>
       <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center">
         {filteredProducts.map((product) => (
           <ProductItem 
@@ -64,6 +72,7 @@ export default function Products() {
             price={product.price}
             image={cleanUrl(product.thumbnail)}
             fallbackImage={fallbackImage}
+            onBuy={handleBuy}
           />
         ))}
       </ul>

@@ -12,9 +12,10 @@ interface ProductItemProps {
   price: number;
   image: string;
   fallbackImage: string;
+  onBuy: (price: number) => void;
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price, image, fallbackImage }) => {
+const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price, image, fallbackImage, onBuy }) => {
   return (
     <li>
       <ProductImage src={image} alt={title} fallback={fallbackImage} />
@@ -22,7 +23,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ id, title, description, price
       <ProductDescription description={description} />
       <div className='flex flex-row gap-4'>
         <ProductPrice price={price} />
-        <ProductButton />
+        <ProductButton onBuy={() => onBuy(price)} />
       </div>
     </li>
   );
