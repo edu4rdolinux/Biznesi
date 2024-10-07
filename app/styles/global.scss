@@ -12,6 +12,7 @@ body {
     background-color: $bg-color-1;
 }
 
-.ProductButton {
+.ProductButton:hover {
+    transition: 0.3s;
     background-color: rgb(34 197 94);
 }
