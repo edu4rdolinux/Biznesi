@@ -60,9 +60,9 @@ export default function Products() {
   return (
     <div>
       <div className="total-price">
-        <h2 className='text-slate-100 m-4 fixed'>Total: ${totalPrice.toFixed(2)}</h2>
+        <h2 className='text-slate-100 m-4'>Total: ${totalPrice.toFixed(2)}</h2>
       </div>
-      <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center">
+      <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center mb-8">
         {filteredProducts.map((product) => (
           <ProductItem 
             key={product.id}
