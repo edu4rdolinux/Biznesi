@@ -14,7 +14,7 @@ const ProductImage: React.FC<ProductImageProps> = ({ src, alt, fallback }) => {
   <img
     src={src}
     alt={alt}
-    width="350"
+    width="300"
     onError={handleError}
   />
 </div>

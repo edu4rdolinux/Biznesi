@@ -3,7 +3,7 @@ interface ProductTitleProps {
 }
 
 const ProductTitle: React.FC<ProductTitleProps> = ({ title }) => {
-  return <h2 className="text-slate-100 text-2xl">{title}</h2>;
+  return <h2 className="text-slate-100 text-lg">{title}</h2>;
 };
 
 export default ProductTitle;
