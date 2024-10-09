@@ -60,7 +60,7 @@ export default function Products() {
   return (
     <div>
       <div className="total-price">
-        <h2 className='text-slate-100 m-4'>Total: ${totalPrice.toFixed(2)}</h2>
+        <h2 className='text-slate-100 m-4 text-center'>Total: ${totalPrice.toFixed(2)}</h2>
       </div>
       <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center -mt-20">
         {filteredProducts.map((product) => (
