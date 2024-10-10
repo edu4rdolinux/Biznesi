@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductItem from './ProductItem';
+import FinishButton from './FinishButton';
 
 interface Product {
   id: number;
@@ -25,6 +26,13 @@ export default function Products() {
   const [error, setError] = useState<string | null>(null);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
+  if (totalPrice >= 1) {
+    const FinishButton = document.getElementById('Finish-Button');
+    if (FinishButton) {
+      FinishButton.style.display = "flex";
+    }
+  }
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -59,8 +67,9 @@ export default function Products() {
 
   return (
     <div>
-      <div className="total-price">
-        <h2 className='text-slate-100 m-4 text-center'>Total: ${totalPrice.toFixed(2)}</h2>
+      <div className="flex gap-4 m-4">
+        <h2 className='text-slate-100'>Total: ${totalPrice.toFixed(2)}</h2>
+        <FinishButton/> 
       </div>
       <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center -mt-20">
         {filteredProducts.map((product) => (
