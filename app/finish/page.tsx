@@ -1,7 +1,10 @@
 import Header from "../components/Header";
+import TotalPrice from "../components/TotalPrice";
 
 export default function Home() {
     return (
-        <Header/>
+        <div>
+          <Header/>
+        </div>
     )
 }

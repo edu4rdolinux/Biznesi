@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductItem from './ProductItem';
 import FinishButton from './FinishButton';
+import TotalPrice from './TotalPrice';
+import { useTotalPrice } from './TotalPriceContext';
 
 interface Product {
   id: number;
@@ -24,15 +26,15 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-
+  const { totalPrice, addToTotal } = useTotalPrice();
+  
   if (totalPrice >= 1) {
     const FinishButton = document.getElementById('Finish-Button');
     if (FinishButton) {
       FinishButton.style.display = "flex";
     }
   }
-  
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -58,7 +60,7 @@ export default function Products() {
   const filteredProducts = products.filter(product => !titlesToRemove.includes(product.title));
 
   const handleBuy = (price: number) => {
-    setTotalPrice((prevTotal) => prevTotal + price);
+    addToTotal(price);
   };
 
   if (error) {
@@ -68,8 +70,8 @@ export default function Products() {
   return (
     <div>
       <div className="flex gap-4 m-4">
-        <h2 className='text-slate-100'>Total: ${totalPrice.toFixed(2)}</h2>
-        <FinishButton/> 
+        <TotalPrice totalPrice={totalPrice} />
+        <FinishButton /> 
       </div>
       <ul className="text-slate-100 flex flex-row flex-wrap gap-12 justify-center -mt-20">
         {filteredProducts.map((product) => (
