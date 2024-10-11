@@ -3,12 +3,10 @@ import React from 'react';
 import { TotalPriceProvider } from '../components/TotalPriceContext';
 import FinishPage from '../components/FinishPage';
 
-const Finish: React.FC = () => {
+export default function Home() {
   return (
-    <TotalPriceProvider>
-      <FinishPage />
-    </TotalPriceProvider>
+      <TotalPriceProvider>
+        <FinishPage />
+      </TotalPriceProvider>
   );
 };
-
-export default Finish;

@@ -1,5 +1,3 @@
-// app/page.tsx ou app/layout.tsx
-
 import Header from './components/Header';
 import Products from './components/Products';
 import { TotalPriceProvider } from './components/TotalPriceContext';
