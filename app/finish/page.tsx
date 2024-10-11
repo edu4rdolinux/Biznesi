@@ -1,10 +1,14 @@
-import Header from "../components/Header";
-import TotalPrice from "../components/TotalPrice";
+"use client";
+import React from 'react';
+import { TotalPriceProvider } from '../components/TotalPriceContext';
+import FinishPage from '../components/FinishPage';
 
-export default function Home() {
-    return (
-        <div>
-          <Header/>
-        </div>
-    )
-}
+const Finish: React.FC = () => {
+  return (
+    <TotalPriceProvider>
+      <FinishPage />
+    </TotalPriceProvider>
+  );
+};
+
+export default Finish;

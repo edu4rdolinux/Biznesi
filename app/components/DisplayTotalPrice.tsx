@@ -1,6 +1,4 @@
-// app/components/DisplayTotalPrice.tsx
-
-"use client"; // Marcar como Client Component
+"use client";
 
 import { useTotalPrice } from './TotalPriceContext';
 
